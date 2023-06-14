@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class Baseball {
     public static void main(String[] args) throws IOException {
-        int [] targetNum = ran();
+        int [] targetNum = ran2();
         int count=10;
         int tr=0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -69,21 +69,38 @@ public class Baseball {
         }
     }
 
-    public static int[] ran() {
+//    public static int[] ran() {
+//        Random ran = new Random();
+//        int tmp = ran.nextInt(10);
+//        int[] targetNum = {tmp, -1, -1};
+//        tmp = ran.nextInt(10);
+//        while (targetNum[0] == tmp) {
+//            tmp = ran.nextInt(10);
+//        }
+//        targetNum[1] = tmp;
+//        tmp = ran.nextInt(10);
+//        while (targetNum[0] == tmp || targetNum[1] == tmp) {
+//            tmp = ran.nextInt(10);
+//        }
+//        targetNum[2] = tmp;
+//        return targetNum;
+//    }
+
+    public static int[] ran2(){
         Random ran = new Random();
-        int tmp = ran.nextInt(10);
-        int[] targetNum = {tmp, -1, -1};
-        tmp = ran.nextInt(10);
-        while (targetNum[0] == tmp) {
-            tmp = ran.nextInt(10);
+        ArrayList<Integer> numList = new ArrayList<>();
+        for(int i=0; i<10; i++) {
+            numList.add(i);
         }
-        targetNum[1] = tmp;
-        tmp = ran.nextInt(10);
-        while (targetNum[0] == tmp || targetNum[1] == tmp) {
-            tmp = ran.nextInt(10);
+        int[] targetNum = new int[3];
+        for(int i=0; i<targetNum.length; i++) {
+            int n=ran.nextInt(numList.size());
+            targetNum[i]=numList.get(n);
+            numList.remove(n);
         }
-        targetNum[2] = tmp;
         return targetNum;
-    }
+    }//숫자야구가 3자리가 아니더라도 랜덤하게 생성 가능?
+
+
 }
 
